@@ -12,6 +12,7 @@ do
 			echo DEVICE: $(echo $interface | awk -F'(: )|[)]' '{ print $3 }')
 			echo NAME: $(echo $interface | awk -F'(, )|[:]' '{ print $2 }')
 			echo MAC ADDRESS: $(ifconfig $(echo $interface | awk -F'(: )|[)]' '{ print $3 }') | awk -F'ether ' '{ print $2 } ')
+			echo IP ADDRESS: $(ipconfig getifaddr $(echo $interface | awk -F'(: )|[)]' '{ print $3 }'))
 		fi
 	fi
 done <<< "$interfaces"
